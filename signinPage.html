@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <title> Login and registration Form </title>
+    <link rel="stylesheet" href="signinPage.css">
+</head>
+
+<body>
+    <div class="logo">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="Login()">Login</button>
+                <button type="button" class="toggle-btn" onclick="Register()">Register</button>
+            </div>
+
+            <form id="Login" class="input-group" action="main.html" method="post">
+                <input type="text" class="input-field" name="Email" placeholder="Email" required>
+                <input type="password" class="input-field" name="Password" placeholder="Password" required>
+                <input type="checkbox" class="check-box" placeholder="checkbox" required>
+                <label for="checkbox">Remember password</label>
+                <button type="submit" name="login" class="submit-btn">Login</button>
+
+
+            </form>
+            <script>
+                function validatePassword() {
+                    var password = document.forms["Form"]["Password1"].value;
+                    var confirm_password = document.forms["Form"]["Confirm_Password1"].value;
+                    var phone = document.forms["Form"]["Phone"].value;
+                    if (password.length < 4) {
+                        document.getElementById("message2").innerHTML = "Password Length must be at least 4 Characters";
+                        return false;
+                    } else {
+                        document.getElementById("message2").innerHTML = "";
+                    }
+                    if (password != confirm_password) {
+                        document.getElementById("message2").innerHTML = "Passwords are not same";
+                        return false;
+                    } else {
+                        document.getElementById("message2").innerHTML = "";
+                    }
+                    if (isNaN(phone)) {
+                        document.getElementById("message1").innerHTML = "Enter only Numbers";
+                        return false;
+                    } else {
+                        document.getElementById("message1").innerHTML = "";
+                    }
+                    if (phone.length < 11 || phone.length > 11) {
+                        document.getElementById("message1").innerHTML = "Enter 11 Digits";
+                        return false;
+                    } else {
+                        document.getElementById("message1").innerHTML = "";
+                    }
+                }
+            </script>
+            <form id="Register" name="Form" class="input-group1" action="main.html" onsubmit=" return validatePassword()" method="post">
+                <input type="text" class="input-field" name="Name" placeholder="Name" required>
+                <input type="text" class="input-field" name="Username" placeholder="Username" required>
+                <input type="email" class="input-field" name="Email" placeholder="Email" required>
+                <input type="text" class="input-field" name="Phone" placeholder="Phone No." required>
+                <span id="message1" style="color:red"> </span> <br>
+                <input type="text" class="input-field" name="Address" placeholder="Address" required>
+                <input type="password" class="input-field" name="Password1" placeholder="Password" required>
+                <input type="password" class="input-field" name="Confirm_Password1" placeholder="Confirm_Password" required>
+                <span id="message2" style="color:red"> </span> <br>
+                <input type="checkbox" class="check-box" placeholder="checkbox" required>
+                <label for="checkbox">I agree with the terms and conditions</label>
+                <button type="submit" value="submit" name="insert" class="submit-btn">Register</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
+    <script src="signinPage.js"></script>
+</body>
+
+</html>
